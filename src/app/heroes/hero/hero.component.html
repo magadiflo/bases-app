@@ -15,8 +15,15 @@
             <dd>{{ capitalizedName }}</dd>
           </dl>
           <div class="container-hero__container-buttons">
-            <button type="button" (click)="changeHero()" class="btn btn-outline-primary">Cambiar nombre</button>
-            <button type="button" (click)="changeAge()" class="btn btn-outline-success">Cambiar edad</button>
+            <button type="button" *ngIf="isActiveName" (click)="changeHero()" class="btn btn-outline-primary">
+              Cambiar nombre
+            </button>
+            <button type="button" *ngIf="age !== 34" (click)="changeAge()" class="btn btn-outline-success">
+              Cambiar edad
+            </button>
+            <button type="button" (click)="resetValues()" class="btn btn-warning">
+              Resetear
+            </button>
           </div>
         </div>
       </div>
