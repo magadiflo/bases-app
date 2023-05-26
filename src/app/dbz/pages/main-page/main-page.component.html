@@ -1,30 +1,11 @@
 <div class="container">
-  <h1 class="text-center my-3">Dragon Ball Z - Personajes</h1>
+  <h1 class="text-center mt-3 mb-5 pb-2 border-bottom">Dragon Ball Z - Personajes</h1>
   <div class="row">
     <div class="col">
-      <h4>Listado</h4>
-      <ul class="list-group">
-        <li class="list-group-item">
-          Krillin - 500
-        </li>
-        <li class="list-group-item">
-          Gokú - 2500
-        </li>
-      </ul>
+      <app-dbz-list></app-dbz-list>
     </div>
     <div class="col">
-      <form autocomplete="off">
-        <h4>Agregar personaje</h4>
-        <div class="mb-3">
-          <label for="name" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="name">
-        </div>
-        <div class="mb-3">
-          <label for="power" class="form-label">Nombre</label>
-          <input type="number" class="form-control" id="power">
-        </div>
-        <button type="submit" class="btn btn-primary">Agregar</button>
-      </form>
+      <app-add-character></app-add-character>
     </div>
   </div>
 </div>
