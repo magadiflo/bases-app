@@ -15,4 +15,8 @@ export class MainPageComponent {
     { name: 'Yamcha', power: 580 },
   ];
 
+  addCharacter(character: Character): void {
+    this.characters.push(character);
+  }
+
 }
