@@ -6,7 +6,7 @@
     let isFirst = first;
     let isLast = last;
     let isEvent = even;
-    let isOdd = odd;" class="list-group-item">
+    let isOdd = odd;" class="list-group-item" [ngClass]="{ 'even': isEvent, 'odd': isOdd }">
     <b class="text-primary">{{ i + 1 }}</b>° {{ character.name }} - <b>{{ character.power }}</b>
   </li>
 </ul>
