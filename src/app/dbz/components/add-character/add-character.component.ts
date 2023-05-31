@@ -20,7 +20,7 @@ export class AddCharacterComponent {
   }
 
   private _resetForms(): Character {
-    return { name: '', power: 0 };
+    return { id: '', name: '', power: 0 };
   }
 
 }

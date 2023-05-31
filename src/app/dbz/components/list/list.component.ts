@@ -10,10 +10,10 @@ import { Character } from '../../interfaces/character.interface';
 export class ListComponent {
 
   @Input({ alias: 'characters', required: true }) characters!: Character[];
-  @Output() emitCharacterToDeleteEvent: EventEmitter<number> = new EventEmitter();
+  @Output() emitCharacterToDeleteEvent: EventEmitter<string> = new EventEmitter();
 
-  emitCharacterToDelete(index: number): void {
-    this.emitCharacterToDeleteEvent.emit(index);
+  emitCharacterToDelete(id: string): void {
+    this.emitCharacterToDeleteEvent.emit(id);
   }
 
 }

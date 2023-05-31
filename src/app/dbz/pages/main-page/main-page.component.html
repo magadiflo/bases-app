@@ -2,7 +2,8 @@
   <h1 class="text-center mt-3 mb-5 pb-2 border-bottom">Dragon Ball Z - Personajes</h1>
   <div class="row">
     <div class="col">
-      <app-dbz-list [characters]="dbzService.characters" (emitCharacterToDeleteEvent)="dbzService.characterToDeleteByIndex($event)"></app-dbz-list>
+      <app-dbz-list [characters]="dbzService.characters"
+        (emitCharacterToDeleteEvent)="dbzService.characterToDeleteById($event)"></app-dbz-list>
     </div>
     <div class="col">
       <app-add-character (newCharacter)="dbzService.addCharacter($event)"></app-add-character>

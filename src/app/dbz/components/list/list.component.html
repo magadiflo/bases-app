@@ -2,7 +2,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>N°</th>
+      <th>Id</th>
       <th>Nombre</th>
       <th>Poder</th>
       <th>Acciones</th>
@@ -16,11 +16,11 @@
       let isLast = last;
       let isEvent = even;
       let isOdd = odd;" [ngClass]="{ 'even': isEvent, 'odd': isOdd }">
-      <td>{{ i + 1 }}</td>
+      <td>{{ character.id | slice: 1-6}}</td>
       <td>{{ character.name }}</td>
       <td>{{ character.power }}</td>
       <td>
-        <button type="button" (click)="emitCharacterToDelete(i)" class="btn btn-danger btn-sm">X</button>
+        <button type="button" (click)="emitCharacterToDelete(character.id)" class="btn btn-danger btn-sm">X</button>
       </td>
     </tr>
   </tbody>
