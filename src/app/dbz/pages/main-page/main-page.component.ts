@@ -19,4 +19,8 @@ export class MainPageComponent {
     this.characters.push(character);
   }
 
+  characterToDeleteByIndex(index: number): void {
+    this.characters.splice(index, 1);
+  }
+
 }
