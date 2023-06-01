@@ -42,3 +42,98 @@ index.html de nuestro directorio **/docs** y en el siguiente tag agregarle el pu
 ```
 Lo que hace el tag anterior es que todos los paths relativos se basarán en el path relativo donde se encuentre
 desplegado este index.html
+
+## Automatización para compilar el build de producción de la aplicación con el ``<base href="./">``
+
+Lo que podemos hacer es usar un comando que trae Angular. Si ejecutamos el siguiente comando: ``ng build --help``
+veremos que nos muestra una lista de banderas a usar, una de esas banderas es ``--base-href``, justo el que 
+necesitamos para cambiar el href del base.
+
+Ahora, nos vamos al **package.json** y en la sección de **scripts** agregamos un script personalizado:
+```json
+"scripts": {
+    .....
+    "build": "ng build", <----- para hacer el build de producción normal
+    "build:href": "ng build --base-href ./",  <----- para hacer el build de producción pero agregando siempre al base el h
+    ....
+  },
+```
+**NOTA**
+
+Solo si nuestra aplicación es desplegada en un path adicional a nuestro dominio, por ejemplo: http://www.miweb.com/base-app/, donde
+nuestra aplicación será desplegada en el path **/base-app**, entonces solo en ese caso, usaremos el comando con el que agregará el 
+punto al href del tag base:
+```
+npm run build:href
+```
+Ahora, si nuestra aplicación siempre se desplegará en la raíz del dominio: http://www.miweb.com/, no necesitamos el punto en el tag
+base del href, es decir, construimos nuestra aplicación con el comando de siempre:
+```
+ng build
+```
+## Automatizar para que siempre que se haga build de la aplicación, se nos cree el directorio /docs el que usamos en GitHub Pages
+Si tenemos nuestra aplicación en GitHub Pages, este nos pide que el build de producción de nuestra aplicación esté en un directorio
+llamado **/docs**, pero siempre que hacemos un **ng build** se nos crea el directorio **/dist/base-app/**. Podríamos automatizar
+ese comportamiento para que siempre nos cree el directorio **/docs**.
+
+Lo primero que haremos será instalar una dependencia de node para tener compatibilidad de comandos ya que algunos comandos funcionan en linux
+otros en windows, etc. es decir, dependiendo del sistema operativo ejecutar los comandos respectivos para, por ejemplo: eliminar archivos.
+
+```
+npm i del-cli --save-dev
+```
+Entonces lo primero que haremos será eliminar el directorio **/docs**, para crear un nuevo directorio **/docs** con los nuevos cambios.
+Usando la dependencia de del-cli, usamos su comando proporcionado para poder generar un scritps:
+```json
+ "scripts": {
+    ....
+    "delete:docs": "del docs"
+  },
+```
+Para ejecutar dicho comando, mediante el cmd ejecutaríamos:
+```
+npm run delete:docs
+```
+Ahora, necesitamos copiar los archivos generados en la construcción de la aplicación de producción, pero para eso necesitamos
+instalar otra dependencia:
+```
+npm i copyfiles --save-dev
+```
+Ahora, creamos el script que nos permitirá copiar los archivos y pegarlos en el directorio /docs
+```json
+ "scripts": {
+    .......
+    "copy:dist": "copyfiles dist/bases-app/* ./docs -f"
+  },
+```
+
+Ahora, para ejecutar dicha copia:
+```
+npm run copy:dist
+```
+
+**NOTA**
+
+Podría usar el comando propio de mi sistema operativo, es decir como estoy en windows, podría usar el comando que se usa mediante
+cmd para poder eliminar un directorio o copiar archivos, pero usamos las dependencias instaladas para aumentar la compatibilidad, 
+es decir, quizá alguien está usando mi proyecto en Linux o Mac, y esos comandos siempre funcionarán, para eso instalamos dichas
+dependencias, solo por eso.
+
+### Creando un solo comando para construir nuestro build de producción para GitHub Pages
+Luego de crear los comandos anterior, para poder ejecutarlos en un solo comando todos ellos, creamos un scritp
+que los ejecute en secuencia:
+```json
+"scripts": {
+    .....
+    "build:href": "ng build --base-href ./",
+    "build:github": "npm run delete:docs && npm run build:href && npm run copy:dist",
+    "delete:docs": "del docs",
+    "copy:dist": "copyfiles dist/bases-app/* ./docs -f"
+  },
+```
+Ahora, podemos ejecutar el comando que une los demás comandos para automatizar todo el proceso de construcción
+de nuestro proyecto para ser subido a GitHub Pages
+
+```bash
+npm run build:github
+```
