@@ -2,6 +2,26 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.1.
 
+## Generar el Build de Producción
+```
+ng build
+```
+
+## Ver la versión de ANGULAR que usa un proyecto
+------------------------------------------------
+- Para saber la versión Gobal de Angular CLI que tenemos instalado en la pc, abrimos cualquier CMD y escribimos
+    ```
+	ng version
+    ```
+	Como resultado obtendremos la versiones de Angular CLI, Node, NPM
+- Ahora, para ver la versión de Angular CLI y la Versión de Angular que usa un proyecto, nos situamos con el CMD dentro
+  de la raíz del proyecto, donde se encuentra el package.json, y ejecutamos el siguiente comando:
+    ```
+	ng version
+    ```
+	Como resultado obtendremos la versión de Angular CLI usado en ese proyecto, Node, NPM y 
+	además la VERSIÓN DE ANGULAR.
+
 # Desplegando la aplicación en GitHub Pages
 
 ### En la pc
