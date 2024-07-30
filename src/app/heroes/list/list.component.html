@@ -1,1 +1,37 @@
-<p>list works!</p>
+<h3>For clásico: *ngFor</h3>
+<p class="alert alert-info">
+  Se necesita importar el `CommonModule` o el `NgFor`
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Hero</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let hero of heroes; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ hero }}</td>
+    </tr>
+  </tbody>
+</table>
+<hr />
+<h3>For moderno: &#64;for</h3>
+<p class="alert alert-warning">No se necesita importar nada</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Hero</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (hero of heroes; track $index) {
+      <tr>
+        <th scope="row">{{ $index + 1 }}</th>
+        <td>{{ hero }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
