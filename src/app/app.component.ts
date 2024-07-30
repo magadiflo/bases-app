@@ -10,4 +10,13 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   public title = 'Aplicación Base';
+  public counter = 10;
+
+  public increaseDecrease(value: number): void {
+    this.counter += value;
+  }
+
+  public resetCounter() {
+    this.counter = 10;
+  }
 }
