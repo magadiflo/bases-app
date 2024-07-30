@@ -107,4 +107,16 @@ Esto también se puede agregar a los proveedores de TestBed para configurar el e
 - eliminar una vista
 - registrar un render hook (las plantillas solo se actualizan si los ganchos de renderizado realizan una de las opciones anteriores)
 
+---
+# [Herramientas para calidad de código](https://github.com/magadiflo/angular-tools-code-quality)
 
+---
+
+En todos los proyectos de Angular de este `curso 2024` utilizaré las herramientas para el `Code Quality` de tal manera que se me haga costrumbre el usarlos. Las herramientas a usar serán:
+
+- `Prettier`, herramienta para formateo de código.
+- `ESLint`, herramienta para identificar y corregir problemas en el código JavaScript o TypeScript.
+- `Husky`, herramienta que permite ejecutar scripts de `Git Hooks` como el `pre-commit` y otros más.
+- `Lintstaged`, herramienta que detecta qué archivos han sido modificados y están preparados para un `commit` para que las reglas definidas en el proyecto `(format, linter)` se apliquen únicamente a dichos archivos.
+
+Para instalar y configurar las herramientas seguir el siguiente repositorio [angular-tools-code-quality.](https://github.com/magadiflo/angular-tools-code-quality)
